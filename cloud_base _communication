@@ -1,4 +1,16 @@
 ``` DB URL 
 postgresql://neondb_owner:npg_QqxdmzZep5V7@ep-snowy-mud-aywwbz1h-pooler.c-5.us-east-2.aws.neon.tech/neondb?sslmode=require&channel_binding=require
 PLS PUT THIS IN YOUR .env FILE AS DATABASE_URL
-  ```
+
+
+Local Environment Variables (.env)
+
+DATABASE_URL=postgresql://neondb_owner:npg_QqxdmzZep5V7@ep-snowy-mud-aywwbz1h-pooler.c-5.us-east-2.aws.neon.tech/neondb?sslmode=require&channel_binding=require
+JWT_SECRET=ebdeca3df9abcddbc3d81f6e925a3a3fc80b2b319843926016aba51ad8714cecf037849bcdb0a240881ed1e93efed936
+PORT=3000
+CORS_ORIGIN=http://localhost:5173   (update later once frontend has a URL)
+
+HERE IS YOUR DEPLOY URL
+https://huddle-backend-fdnr.onrender.com
+once you push the real code alongside the script, it d autodeploy it
+right now it fails cos no code+primsa setup
