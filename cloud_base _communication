@@ -1,0 +1,4 @@
+``` DB URL 
+postgresql://neondb_owner:npg_QqxdmzZep5V7@ep-snowy-mud-aywwbz1h-pooler.c-5.us-east-2.aws.neon.tech/neondb?sslmode=require&channel_binding=require
+PLS PUT THIS IN YOUR .env FILE AS DATABASE_URL
+  ```
