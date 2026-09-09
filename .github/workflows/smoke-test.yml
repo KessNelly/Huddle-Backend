@@ -1,0 +1,20 @@
+name: Smoke Test After Deploy
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  smoke-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Wait for Render deploy to finish
+        run: sleep 90
+
+      - name: Install jq
+        run: sudo apt-get install -y jq
+
+      - name: Run smoke test
+        run: ./smoke.sh https://huddle-backend-fdnr.onrender.com/api
