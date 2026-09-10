@@ -42,5 +42,5 @@ model Message {
   channel   Channel  @relation(fields: [channelId], references: [id], onDelete: Cascade)
 
   @@map("messages")
-  @@index([channelId])
+  @@index([channelId, createdAt])
 }

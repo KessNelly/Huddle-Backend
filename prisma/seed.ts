@@ -17,7 +17,13 @@ async function main() {
     create: { name: "random" },
   });
 
-  console.log("Seeded channels:", general.name, random.name);
+  const design = await prisma.channel.upsert({
+    where: { name: "design" },
+    update: {},
+    create: { name: "design" },
+  });
+
+  console.log("Seeded channels:", general.name, design.name, random.name);
 
   // Optional: create a couple of test users (password = "password123")
   const passwordHash = await bcrypt.hash("password123", 10);
