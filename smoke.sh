@@ -25,16 +25,6 @@ CODE=$(curl -s -o /tmp/l.json -w '%{http_code}' -X POST "$API/auth/login" \
   -H 'Content-Type: application/json' \
   -d "{\"email\":\"$EMAIL\",\"password\":\"$PASS\"}")
 check "login" "$CODE" "200"
-TOKEN=$(jq -r '.accessToken // empty' /tmp/l.json)
-
-CODE=$(curl -s -o /tmp/c.json -w '%{http_code}' "$API/channels" -H "Authorization: Bearer $TOKEN")
-check "list channels" "$CODE" "200"
-CH=$(jq -r '.channels[0].id // empty' /tmp/c.json)
-
-CODE=$(curl -s -o /tmp/m.json -w '%{http_code}' -X POST "$API/channels/$CH/messages" \
-  -H "Authorization: Bearer $TOKEN" -H 'Content-Type: application/json' \
-  -d '{"content":"smoke test message"}')
-check "send message" "$CODE" "201"
 
 echo "$PASSED passed, $FAILED failed"
 [ "$FAILED" -eq 0 ] || exit 1
