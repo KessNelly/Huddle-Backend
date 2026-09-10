@@ -16,6 +16,10 @@ export function errorHandler(
   res: Response,
   _next: NextFunction
 ) {
+   if ((err as Error & { type?: string }).type === "entity.parse.failed") {
+    return res.status(400).json({ error: "Invalid JSON request body" });
+  }
+
   if (err instanceof AppError) {
     return res.status(err.statusCode).json({
       error: err.message,

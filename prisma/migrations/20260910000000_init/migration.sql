@@ -1,3 +1,6 @@
+-- CreateSchema
+CREATE SCHEMA IF NOT EXISTS "public";
+
 -- CreateTable
 CREATE TABLE "users" (
     "id" TEXT NOT NULL,
@@ -39,7 +42,7 @@ CREATE UNIQUE INDEX "users_email_key" ON "users"("email");
 CREATE UNIQUE INDEX "channels_name_key" ON "channels"("name");
 
 -- CreateIndex
-CREATE INDEX "messages_channelId_idx" ON "messages"("channelId");
+CREATE INDEX "messages_channelId_createdAt_idx" ON "messages"("channelId", "createdAt");
 
 -- AddForeignKey
 ALTER TABLE "messages" ADD CONSTRAINT "messages_userId_fkey" FOREIGN KEY ("userId") REFERENCES "users"("id") ON DELETE CASCADE ON UPDATE CASCADE;
